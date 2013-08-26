@@ -26,3 +26,32 @@ mv $ROOT/usr/lib/locale/locale-archive $ROOT/usr/lib/locale/locale-archive.tmpl
 chroot $ROOT /usr/sbin/build-locale-archive
 
 yum -y --installroot=$ROOT clean all
+
+touch $ROOT/sbin/init
+touch $ROOT/etc/resolv.conf
+mkdir -m 755 $ROOT/dev/pts
+mkdir -m 755 $ROOT/dev/shm
+ln -s /proc/kcore $ROOT/dev/core
+ln -s /proc/self/fd $ROOT/dev/fd
+ln -s /proc/self/fd/0 $ROOT/dev/stdin
+ln -s /proc/self/fd/1 $ROOT/dev/stdout
+ln -s /proc/self/fd/2 $ROOT/dev/stderr
+#mknod -m 666 $ROOT/dev/null c 1 3 # Already exists
+mknod -m 666 $ROOT/dev/zero c 1 5
+mknod -m 666 $ROOT/dev/full c 1 7
+mknod -m 666 $ROOT/dev/random c 1 8
+mknod -m 666 $ROOT/dev/urandom c 1 9
+mknod -m 666 $ROOT/dev/tty c 5 0
+mknod -m 600 $ROOT/dev/console c 5 1
+mknod -m 666 $ROOT/dev/ptmx c 5 2
+mknod -m 600 $ROOT/dev/tty0 c 4 0
+mknod -m 600 $ROOT/dev/tty1 c 4 1
+mknod -m 600 $ROOT/dev/tty2 c 4 2
+mknod -m 600 $ROOT/dev/tty3 c 4 3
+mknod -m 600 $ROOT/dev/tty4 c 4 4
+mknod -m 600 $ROOT/dev/tty5 c 4 5
+mknod -m 600 $ROOT/dev/tty6 c 4 6
+mknod -m 600 $ROOT/dev/tty7 c 4 7
+mknod -m 600 $ROOT/dev/tty8 c 4 8
+mknod -m 600 $ROOT/dev/tty9 c 4 9
+chown root.tty $ROOT/dev/tty* $ROOT/dev/ptmx
