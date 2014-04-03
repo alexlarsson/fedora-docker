@@ -13,8 +13,8 @@ rm -rf chroot
 ROOT=`pwd`/chroot
 mkdir -p $ROOT/var/lib/rpm
 rpm --root $ROOT --dbpath /var/lib/rpm --initdb
-rpm --root $ROOT -ivh fedora-release-19-2.noarch.rpm
-rpm --root $ROOT -ivh home/RPM/RPMS/noarch/fake-runtime-0.0.1-1.fc19.noarch.rpm
+rpm --root $ROOT -ivh fedora-release-20-3.noarch.rpm
+rpm --root $ROOT -ivh home/RPM/RPMS/noarch/fake-runtime-0.0.1-1.fc20.noarch.rpm
 yum -y --installroot=$ROOT install bash grep coreutils findutils rpm sed cpio cyrus-sasl file-libs gawk xz
 
 # Compress cracklib
