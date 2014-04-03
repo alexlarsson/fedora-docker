@@ -15,7 +15,7 @@ mkdir -p $ROOT/var/lib/rpm
 rpm --root $ROOT --dbpath /var/lib/rpm --initdb
 rpm --root $ROOT -ivh fedora-release-20-3.noarch.rpm
 rpm --root $ROOT -ivh home/RPM/RPMS/noarch/fake-runtime-0.0.1-1.fc20.noarch.rpm
-yum -y --installroot=$ROOT install bash grep coreutils findutils rpm sed cpio cyrus-sasl file-libs gawk xz
+yum -y --installroot=$ROOT install bash grep coreutils findutils rpm sed cpio cyrus-sasl file-libs gawk xz yum
 
 # Compress cracklib
 gzip -9 $ROOT/usr/share/cracklib/pw_dict.pwd
